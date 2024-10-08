@@ -9,6 +9,13 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
-    this.size = 0;
+    this.length = 0;
+  }
+
+  size() {
+    return this.length;
   }
 }
+
+let list = new LinkedList();
+console.log(list.size());
