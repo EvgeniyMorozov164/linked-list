@@ -69,12 +69,33 @@ class LinkedList {
 
     while (count < index) {
       current = current.next;
-      count++;
-      if (count === index) {
-        return current;
-      }
+      count++;      
     }
 
+    return current;
+  }
+
+  pop() {
+    if (this.length === 0) {
+      return "List is empty!";
+    }  
+    
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+      return this;
+    }
+
+    let current = this.head;    
+
+    while (current.next !== this.tail) {
+      current = current.next;      
+    }    
+    current.next = null;
+    this.tail = current;
+    this.length--;    
+    return this;
   }
 }
 
@@ -83,11 +104,15 @@ list.append(1);
 list.append(2);
 list.append(3);
 list.append(4);
-list.append(8);
+list.append(5);
+list.append(6);
 // list.prepend(9);
 // list.prepend(10);
-// console.log(JSON.stringify(list));
+list.pop();
+list.pop();
+list.pop()
+console.log(JSON.stringify(list));
 // console.log(list.size());
 // console.log(list.printHead());
 // console.log(list.printTail());
-console.log(list.at(1));
+// console.log(list.at(1));
