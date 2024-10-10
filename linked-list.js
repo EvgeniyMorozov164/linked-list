@@ -97,6 +97,23 @@ class LinkedList {
     this.length--;    
     return this;
   }
+
+  contains(value) {
+    if (this.length === 0) {
+      return "List is empty!";
+    }
+
+    let current = this.head;
+    
+    while (current) {
+      if (current.data === value) {
+        return true;
+      }
+      current = current.next;
+    }
+
+    return false;
+  }
 }
 
 let list = new LinkedList();
@@ -106,13 +123,9 @@ list.append(3);
 list.append(4);
 list.append(5);
 list.append(6);
-// list.prepend(9);
-// list.prepend(10);
-list.pop();
-list.pop();
-list.pop()
+list.prepend(0);
+list.prepend(-1);
+
 console.log(JSON.stringify(list));
-// console.log(list.size());
-// console.log(list.printHead());
-// console.log(list.printTail());
-// console.log(list.at(1));
+
+
