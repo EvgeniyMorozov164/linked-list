@@ -157,18 +157,42 @@ class LinkedList {
     
     return result;
   }
+
+  insertAt(value, index) {    
+   if (this.length === 0) {
+    this.prepend(value);
+   }
+
+   let current = this.head;
+   let prev = null;
+   let position = 0;
+
+   while (position < index) {
+    prev = current;
+    current = current.next;
+    if (!current) {
+      return;
+    }  
+    position++;
+   }
+
+   const node = new Node(value);
+   prev.next = node;
+   node.next = current;
+   this.length++;
+
+   return this;
+  }
 }
 
 let list = new LinkedList();
-list.append(1);
-list.append(2);
-list.append(3);
-list.append(4);
-list.append(5);
-list.append(6);
-list.prepend(0);
-list.prepend(-1);
 
+for (let i = 0; i < 10; i++) {
+  list.append(i);
+}
+
+list.insertAt("test", 5);
+console.log(list.size());
 console.log(list.toString());
 
 
