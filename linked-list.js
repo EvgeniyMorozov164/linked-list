@@ -183,16 +183,36 @@ class LinkedList {
 
    return this;
   }
+
+  removeAt(index) {
+    if (this.length === 0 || index > this.length) {
+      return;
+    }
+
+    if (index === this.length) {
+      this.pop();
+    }
+
+    let current = this.head;
+    let prev = null;
+    let position = 0;
+
+    while (position < index) {
+      prev = current;
+      current = current.next;
+      if (!current) {
+        return;
+      }
+      position++;      
+    }
+
+    prev.next = current.next;
+    this.length--;
+
+    return this;
+  }
 }
 
-let list = new LinkedList();
 
-for (let i = 0; i < 10; i++) {
-  list.append(i);
-}
-
-list.insertAt("test", 5);
-console.log(list.size());
-console.log(list.toString());
 
 
