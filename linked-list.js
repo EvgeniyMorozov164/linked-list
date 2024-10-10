@@ -133,19 +133,42 @@ class LinkedList {
 
     return false;
   }
+
+  toString() {
+    let result = "";
+
+    if (this.length === 0) {
+      return "null";
+    }
+
+    let current = this.head;
+
+    while (current) {
+      if (current === this.head) {
+        result = `( ${current.data} )`;
+      } else {
+        result = `${result} -> ( ${current.data} )`;
+      }
+      
+      current = current.next;
+    }
+    
+    result = `${result} -> null`;
+    
+    return result;
+  }
 }
 
 let list = new LinkedList();
-// list.append(1);
-// list.append(2);
-// list.append(3);
-// list.append(4);
-// list.append(5);
-// list.append(6);
-// list.prepend(0);
-// list.prepend(-1);
+list.append(1);
+list.append(2);
+list.append(3);
+list.append(4);
+list.append(5);
+list.append(6);
+list.prepend(0);
+list.prepend(-1);
 
-console.log(JSON.stringify(list));
-console.log(list.contains(10));
+console.log(list.toString());
 
 
